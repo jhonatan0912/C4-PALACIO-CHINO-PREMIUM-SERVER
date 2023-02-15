@@ -1,7 +1,11 @@
 import { pool } from "./../db.js";
 
 export const getPromociones = async (req, res) => {
-  const [rows] = await pool.query('SELECT * FROM promociones')
-  console.log(rows);
-  res.send(rows)
+
+  try {
+    const [rows] = await pool.query('SELECT * FROM promociones')
+    res.send(rows)
+  } catch (error) {
+    console.error(error);
+  }
 }
